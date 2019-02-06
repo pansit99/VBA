@@ -1,0 +1,19 @@
+'EVENT TRIGGER - IF CELL VALUE IS CHANGED
+'              - SPECIFICALLY IF IN COLUMN 7 & 8 (G & H)
+'              - AND IF BEYOND ROW 10
+
+Private Sub Worksheet_Change(ByVal Target As Range)
+
+Select Case Target.Row
+    Case Is >= 11
+        Select Case Target.Column
+            Case Is = 7, Is = 8
+                Select Case worksheet_.Range("A" & Target.Row).Value
+                    Case Is <> ""
+                        worksheet_.Range("R" & Target.Row).Value = worksheet_.Range("I" & Target.Row) * _
+                                                                worksheet_.Range("BJ" & Target.Row)
+                End Select
+        End Select
+End Select
+
+End Sub
